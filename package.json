@@ -1,0 +1,19 @@
+{
+  "name": "garbo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "express": "^4.16.2",
+    "redis": "^2.8.0",
+    "redis-scanner": "^0.1.1",
+    "response-time": "^2.3.2"
+  }
+}
