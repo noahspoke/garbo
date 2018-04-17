@@ -4,3 +4,8 @@
 /*.log
 /*.pid
 /*.pid.lock
+/*.lock
+/*.3000.pid
+/*.4568.pid
+/*.3000.pid.lock
+/*.4568.pid.lock
