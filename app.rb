@@ -30,6 +30,7 @@ end
 get '/person' do
 	# New person
 	# Blah
+	# Blah 3
 	haml :new_person
 end
 
