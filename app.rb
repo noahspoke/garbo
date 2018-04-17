@@ -18,6 +18,10 @@ enable :sessions
 
 # Ohm.redis = Redic.new
 
+get '/' do
+	"hello worldddd"
+end
+
 get '/search' do
 	# render search view
 	"hello world"
@@ -25,13 +29,13 @@ end
 
 get '/person' do
 	# New person
-
+	haml :new_person
 end
 
 get '/person/:id' do
 	person = Person[params[:id]]
 
-	haml :person, :locals => {:person => person}
+	haml :show_person, :locals => {:person => person}
 end
 
 namespace '/api' do
