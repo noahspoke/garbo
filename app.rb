@@ -8,6 +8,7 @@ require 'sinatra/param'
 require 'sinatra/namespace'
 require 'ohm'
 require 'haml'
+require 'active_support/all'
 require 'bundler/setup'
 require_relative 'models/person'
 
@@ -53,7 +54,7 @@ namespace '/api' do
 
 	# show all
 	get '/people' do
-		Person.all
+		Person.all.to_a.map(&:last_name)
 	end
 
 	get '/person/:id' do
@@ -62,13 +63,14 @@ namespace '/api' do
 	end
 
 	post '/person' do
-		param :name, String, required: true
-		param :birth_date, String, required: true
-		param :filing_date, String, required: true
+		param :first_name, String, required: true
+		param :last_name, String, required: true
+		#param :filing_date, String, required: true
+
 
 
 		person = Person.create(params.except(:captures))
-		person
+		person.first_name
 	end
 
 	delete '/person/:id' do

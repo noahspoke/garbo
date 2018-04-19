@@ -14,6 +14,7 @@ gem 'tux'
 gem 'ohm'
 gem 'haml'
 gem 'foreman'
+gem 'activesupport'
 
 group :development, :test do
 	gem 'rspec'

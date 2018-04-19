@@ -1,12 +1,13 @@
 class Person < Ohm::Model
-	attribute :name
-	attribute :birth_date
-	attribute :filing_date
+	attribute :first_name
+	attribute :last_name
+	attribute :birth_year
+	attribute :appearance_arrest_date
 	attribute :case_number
-	attribute :category
+	attribute :charge_number
+	attribute :number_of_charges
 	attribute :city
 	attribute :state
-	attribute :zipcde
 
 	#attribute :description
 	#attribute :company
@@ -15,8 +16,12 @@ class Person < Ohm::Model
 
 	# Add other needed fields.
 
-	index :name
-	index :filing_date
-	index :birth_date
+	index :first_name
+	index :last_name
+	index :birth_year
+	index :appearance_arrest_date
+	index :case_number
+	index :charge_number
 	index :city
+	index :state
 end
