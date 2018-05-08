@@ -2,30 +2,46 @@ require 'rubygems'
 require 'sinatra'
 require 'json'
 require 'redis'
-require 'sinatra/reloader' if development?
+require 'sinatra/reloader'
 require 'dotenv'
 require 'sinatra/param'
 require 'sinatra/namespace'
 require 'ohm'
 require 'haml'
 require 'active_support/all'
+require 'sass'
+require 'sprockets'
 require 'bundler/setup'
 require_relative 'models/person'
 
 Dotenv.load
 
+configure :development do
+	enable :reloader
+end
+
 helpers Sinatra::Param
 enable :sessions
 
-# Ohm.redis = Redic.new
+environment = Sprockets::Environment.new
+set :environment, environment
+
+environment.append_path 'assets/stylesheets'
+environment.css_compressor = :scss
 
 get '/' do
-	"hello worldddd"
+	haml :index
 end
 
 get '/search' do
-	# render search view
-	"hello world"
+	param :q, String, required: true
+
+	#begin
+		# do the work code hurr
+		"hello world"
+	#rescue Sinatra::Param => error
+		#redirect_to '/'
+	#end
 end
 
 get '/person' do
@@ -39,6 +55,11 @@ get '/person/:id' do
 	person = Person[params[:id]]
 
 	haml :show_person, :locals => {:person => person}
+end
+
+get '/assets/*' do
+	env['PATH_INFO'].sub!('/assets', '')
+	settings.environment.call(env)
 end
 
 namespace '/api' do

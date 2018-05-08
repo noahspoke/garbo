@@ -1,5 +1,13 @@
 %html
 	%head
+		%link{:rel => 'stylesheet', :type => 'text/css', :href => 'assets/app.css'}
 		%script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js")
 	%body
-		= yield
+		%div{:class => 'bar'}
+		%header
+			%a{:href => '/'}
+				%h1 Garbo
+		%div{:class => 'content'}
+			= yield
+		%footer
+			%p &copy; 2018 Garbo, Inc.

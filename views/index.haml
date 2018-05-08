@@ -1,0 +1,9 @@
+%form{:method => 'GET', :action => '/search'}
+	%div{:class => 'form--row'}
+		%input{:type => 'text', :name => 'keyword', :placeholder => 'Search for someone', :class => 'input--full-width'}
+
+	%button{:type => 'submit', :class => 'button--default'} Search
+
+%p
+	By clicking "Search" you agree to Garbo's
+	%a{:href => '#'} Terms of Service.

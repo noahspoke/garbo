@@ -15,6 +15,8 @@ gem 'ohm'
 gem 'haml'
 gem 'foreman'
 gem 'activesupport'
+gem 'sass'
+gem 'sprockets'
 
 group :development, :test do
 	gem 'rspec'

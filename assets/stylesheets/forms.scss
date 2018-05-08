@@ -1,0 +1,41 @@
+.content {
+	p {
+		text-align: center;
+		margin: 32px 0;
+	}
+}
+
+form {
+	width: 640px;
+	margin: 32px auto 0 auto;
+	text-align: center;
+
+	button {
+		width: 100%;
+	}
+}
+
+.form--row {
+	display: block;
+	width: 100%;
+	display: flex;
+	margin: 32px 0;
+
+	input {
+		flex: 1 1 50%;
+
+		&:first-child {
+			margin: 0 16px 0 0;
+		}
+	}
+}
+
+.button--default {
+	width: 256px;
+	margin: 0 auto;
+}
+
+.input--full-width {
+	flex: 1 1 100%;
+	margin: 0;
+}

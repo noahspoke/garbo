@@ -1,10 +1,15 @@
 %form{:method => "POST", :action => "/api/person"}
-	%input{:type => "text", :name => "first_name", :placeholder => "First Name"}
-	%input{:type => "text", :name => "last_name", :placeholder => "Last Name"}
-	%input{:type => "text", :name => "appearance_arrest_date", :placeholder => "Appearance or Arrest Date"}
-	%input{:type => "text", :name => "case_number", :placeholder => "Case #"}
-	%input{:type => "text", :name => "charge_number", :placeholder => "Charge #"}
-	%input{:type => "text", :name => "number_of_charges", :placeholder => "# of Charges"}
-	%input{:type => "text", :name => "city", :placeholder => "City"}
-	%input{:type => "text", :name => "state", :placeholder => "State"}
-	%input{:type => "submit", :value => "Create"}
+	%div{:class => 'form--row'}
+		%input{:type => "text", :name => "first_name", :placeholder => "First Name"}
+		%input{:type => "text", :name => "last_name", :placeholder => "Last Name"}
+	%div{:class => 'form--row'}
+		%input{:type => "date", :name => "appearance_arrest_date", :placeholder => "Appearance or Arrest Date"}
+		%input{:type => "number", :name => "number_of_charges", :placeholder => "# of Charges"}
+	%div{:class => 'form--row'}
+		%input{:type => "number", :name => "case_number", :placeholder => "Case #"}
+		%input{:type => "number", :name => "charge_number", :placeholder => "Charge #"}
+	%div{:class => 'form--row'}
+		%input{:type => "text", :name => "city", :placeholder => "City"}
+		%input{:type => "text", :name => "state", :placeholder => "State"}
+
+	%button{:type => "submit"} Add
