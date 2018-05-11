@@ -1,33 +1,22 @@
-require 'rubygems'
-require 'sinatra'
-require 'json'
-require 'redis'
-require 'sinatra/reloader'
-require 'dotenv'
-require 'sinatra/param'
-require 'sinatra/namespace'
-require 'ohm'
-require 'haml'
-require 'active_support/all'
-require 'sass'
-require 'sprockets'
-require 'bundler/setup'
-require_relative 'models/person'
+require_relative 'config/initialize'
 
-Dotenv.load
+def search_by(keyword)
+	people = []
 
-configure :development do
-	enable :reloader
+	first_name_keys = Ohm.redis.call("SCAN", "0", "MATCH", "Person:indices:first_name:*#{keyword.titleize}*", "COUNT", "1000")
+	last_name_keys = Ohm.redis.call("SCAN", "0", "MATCH", "Person:indices:last_name:*#{keyword.titleize}*", "COUNT", "1000")
+	keys = first_name_keys[1].concat(last_name_keys[1])
+
+	keys.map { |key|
+		ids = Ohm.redis.call("SMEMBERS", key)
+
+		ids.each do |id|
+			people.push(Person[id])
+		end
+	}
+
+	keys
 end
-
-helpers Sinatra::Param
-enable :sessions
-
-environment = Sprockets::Environment.new
-set :environment, environment
-
-environment.append_path 'assets/stylesheets'
-environment.css_compressor = :scss
 
 get '/' do
 	haml :index
@@ -36,12 +25,7 @@ end
 get '/search' do
 	param :q, String, required: true
 
-	#begin
-		# do the work code hurr
-		"hello world"
-	#rescue Sinatra::Param => error
-		#redirect_to '/'
-	#end
+	haml :results, :locals => { :people => search_by(params[:q]) }
 end
 
 get '/person' do
