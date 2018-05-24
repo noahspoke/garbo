@@ -5,7 +5,8 @@ def search_by(keyword)
 
 	first_name_keys = Ohm.redis.call("SCAN", "0", "MATCH", "Person:indices:first_name:*#{keyword.titleize}*", "COUNT", "1000")
 	last_name_keys = Ohm.redis.call("SCAN", "0", "MATCH", "Person:indices:last_name:*#{keyword.titleize}*", "COUNT", "1000")
-	keys = first_name_keys[1].concat(last_name_keys[1])
+	keys = first_name_keys[1].to_a.concat(last_name_keys[1].to_a)
+	puts keys
 
 	keys.map { |key|
 		ids = Ohm.redis.call("SMEMBERS", key)
@@ -15,7 +16,7 @@ def search_by(keyword)
 		end
 	}
 
-	keys
+	people
 end
 
 get '/' do
@@ -25,7 +26,9 @@ end
 get '/search' do
 	param :q, String, required: true
 
-	haml :results, :locals => { :people => search_by(params[:q]) }
+	people = search_by(params[:q])
+	puts people
+	haml :results, :locals => { :people => people }
 end
 
 get '/person' do
