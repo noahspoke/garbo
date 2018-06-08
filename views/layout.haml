@@ -1,12 +1,20 @@
+- @current_user = User[session[:user_id]] if session[:user_id]
 %html
 	%head
-		%link{:rel => 'stylesheet', :type => 'text/css', :href => 'assets/app.css'}
+		%link{:rel => 'stylesheet', :type => 'text/css', :href => '/assets/app.css'}
 		%script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js")
 	%body
 		%div{:class => 'bar'}
 		%header
 			%a{:href => '/'}
 				%h1 Garbo
+			%div{:class => 'header--auth-wrapper'}
+				- if session[:user_id]
+					%p
+						= @current_user.email
+				- else
+					%a{:href => '/signin'}
+						%button{:class => 'button--sign-in'} Sign In
 		%div{:class => 'content'}
 			= yield
 		%footer

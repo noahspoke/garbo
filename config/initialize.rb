@@ -12,7 +12,9 @@ require 'active_support/all'
 require 'sass'
 require 'sprockets'
 require 'bundler/setup'
+require 'bcrypt'
 require_relative '../models/person'
+require_relative '../models/user'
 
 Dotenv.load
 

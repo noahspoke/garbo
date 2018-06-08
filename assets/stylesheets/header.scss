@@ -1,0 +1,41 @@
+header {
+	margin: 16px 0;
+	padding: 0 32px;
+	flex: 0;
+	height: 64px;
+
+	a {
+		text-decoration: none;
+		display: inline-block;
+		text-align: left;
+		float: left;
+		height: 64px;
+		line-height: 64px;
+
+		h1 {
+			font-size: 32px;
+			font-family: $font-family;
+			color: $charcoal;
+			margin: 0;
+			font-weight: 700;
+		}
+	}
+
+	.header--auth-wrapper {
+		text-align: right;
+		display: inline-block;
+		float: right;
+		height: 64px;
+		line-height: 64px;
+
+		.button--sign-in {
+			width: 115px;
+			cursor: pointer;
+			@include vertical-center-relative;
+		}
+
+		p {
+			margin: 0;
+		}
+	}
+}

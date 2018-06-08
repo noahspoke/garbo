@@ -17,6 +17,7 @@ gem 'foreman'
 gem 'activesupport'
 gem 'sass'
 gem 'sprockets'
+gem 'bcrypt'
 
 group :development, :test do
 	gem 'rspec'

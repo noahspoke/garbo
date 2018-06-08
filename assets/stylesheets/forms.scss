@@ -1,8 +1,17 @@
+@import 'globals';
+
 .content {
 	p {
 		text-align: center;
 		margin: 32px 0;
 	}
+}
+
+.index--wrapper {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	@include vertical-center-relative;
 }
 
 form {

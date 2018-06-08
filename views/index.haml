@@ -1,9 +1,10 @@
-%form{:method => 'GET', :action => '/search'}
-	%div{:class => 'form--row'}
-		%input{:type => 'text', :name => 'q', :placeholder => 'Search for someone', :class => 'input--full-width'}
+%div{:class => 'index--wrapper'}
+	%form{:method => 'GET', :action => '/search'}
+		%div{:class => 'form--row'}
+			%input{:type => 'text', :name => 'q', :placeholder => 'Search for someone', :class => 'input--full-width'}
 
-	%button{:type => 'submit', :class => 'button--default'} Search
+		%button{:type => 'submit', :class => 'button--default'} Search
 
-%p
-	By clicking "Search" you agree to Garbo's
-	%a{:href => '#'} Terms of Service.
+	%p
+		By clicking "Search" you agree to Garbo's
+		%a{:href => '#'} Terms of Service.

@@ -1,0 +1,14 @@
+%form{:method => 'POST', :action => '/signup'}
+	%div{:class => 'form--row'}
+		%input{:type => "text", :name => "name", :placeholder => "Name"}
+	%div{:class => 'form--row'}
+		%input{:type => "text", :name => "email", :placeholder => "Email"}
+	%div{:class => 'form--row'}
+		%input{:type => "password", :name => "password", :placeholder => "Password"}
+		%input{:type => "password", :name => "password_confirmation", :placeholder => "Confirm Password"}
+
+	%button{:type => "submit"} Sign Up
+%p
+	Already have an account?
+	%a{:href => '/signin'}
+		Sign In
