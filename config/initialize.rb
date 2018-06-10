@@ -15,6 +15,7 @@ require 'bundler/setup'
 require 'bcrypt'
 require_relative '../models/person'
 require_relative '../models/user'
+require_relative '../services/bulk_import'
 
 Dotenv.load
 
