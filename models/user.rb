@@ -6,6 +6,7 @@ class User < Ohm::Model
 	attribute :email_token
 	attribute :email_verified
 	attribute :phone_verified
+	attribute :is_admin
 
 	index :name
 	index :email

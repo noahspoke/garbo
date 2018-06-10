@@ -34,12 +34,20 @@ post '/signup' do
 	param :email, String, required: true
 	param :password, String, required: true
 	param :password_confirmation, String, required: true
+	param :is_admin, Boolean, default: false
 
 	redirect '/signup' if !params[:password].eql?(params[:password_confirmation])
 
 	encrypted_password = BCrypt::Password.create(params[:password])
 
-	user = User.create(name: params[:name], password: encrypted_password, email: params[:email])
+	user = User.create(
+		name: params[:name], 
+		password: encrypted_password, 
+		email: params[:email], 
+		is_admin: params[:is_admin], 
+		phone_verified: false,
+		email_verified: false
+	)
 
 	session[:user_id] = user.id
 
@@ -68,6 +76,12 @@ end
 
 post '/verify/email/:email_token' do
 
+end
+
+get '/admin' do
+	redirect '/' unless is_admin?
+
+	haml :admin
 end
 
 get '/search' do

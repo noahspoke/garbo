@@ -3,6 +3,10 @@ module Helpers
 		User[session[:user_id]] if session[:user_id]
 	end
 
+	def is_admin?
+		current_user.is_admin
+	end
+
 	def verify_user
 		redirect '/verify/email' unless current_user.email_verified
 		redirect '/verify/phone' unless current_user.phone_verified
